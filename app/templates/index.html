@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BR CS2 | Partidas</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon.ico') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="w-full bg-gray-50 h-full py-0 sm:py-5 flex justify-center items-center">
+        <div class="p-5 w-full sm:w-fit bg-white sm:shadow-lg border sm:rounded-lg flex-col items-center justify-center">
+            <p class="font-bold text-xl sm:text-2xl md:text-3xl border-b py-5">Partidas de Times Brasileiros</p>
+            {% if matches %}
+                {% for match in matches %}
+                    <div class="border-b w-full flex flex-col justify-center items-center mt-4 mb-4 pb-4">
+                        <div class="w-full flex flex-col gap-1 py-2 justify-center items-center sm:px-4">
+                            <div class="flex flex-col sm:flex-row w-full justify-center gap-2 items-center mb-2">
+                                <div class="flex gap-3 sm:gap-4 items-center">
+                                    <img src="{{ match.team_1_logo }}" alt="{{ match.team_1 }}" class="w-12 h-12">
+                                    <p class="font-semibold text-xl">{{ match.team_1 }}</p>
+                                </div>
+                                <div class="mx-2">vs</div>
+                                <div class="flex gap-3 sm:gap-4  flex-row-reverse sm:flex-row items-center">
+                                    <p class="font-semibold text-xl">{{ match.team_2 }}</p>
+                                    <img src="{{ match.team_2_logo }}" alt="{{ match.team_2 }}" class="w-12 h-12">
+                                </div>
+                            </div>
+                            <p class="text-sm">{{ match.date }} - {{ match.time }}</p>
+                            <a href="{{ match.match_link }}" target="_blank" class="text-blue-500 hover:underline">Ver detalhes da partida</a>
+                        </div>
+                        
+                        <div class="w-full rounded mb-4 p-2 flex flex-col sm:flex-row items-center gap-2 justify-center bg-gray-200">
+                            <img src="{{ match.event_logo }}" alt="Logo do Evento" class="w-10 h-10">
+                            <p class="text-xs mb-2">{{ match.event_name }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div>Nenhuma partida encontrada :(</div>
+            {% endif %}
+
+
+        </div>
+    </div>
+</body>
+</html>
