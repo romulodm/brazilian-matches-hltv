@@ -65,13 +65,21 @@ def get_upcoming_matches():
             match_link = "https://www.hltv.org" + match_link_element['href']
 
             if date and (team_1 in brazilian_teams or team_2 in brazilian_teams):
+                # Convert timestamp
+                match_datetime = datetime.fromtimestamp(int(date) / 1000)
+
+                # Format the date and time
+                formatted_date = match_datetime.strftime('%d/%m/%Y')  # Format: DD/MM/YYYY
+                formatted_time = match_datetime.strftime('%H:%M:%S')  # Format: HH:MM:SS
+
                 match_info = {
+                    "timestamps": date,
+                    "date": formatted_date,
+                    "time": formatted_time,
                     "team_1": team_1,
                     "team_1_logo": team_1_logo,
                     "team_2": team_2,
                     "team_2_logo": team_2_logo,
-                    "time": match_time,
-                    "date": datetime.fromtimestamp(int(date)/1000).strftime('%Y-%m-%d %H:%M:%S'),
                     "event_name": event_name,
                     "event_logo": event_logo,
                     "match_link": match_link
