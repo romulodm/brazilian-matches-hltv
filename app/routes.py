@@ -14,5 +14,5 @@ def index():
     return render_template('index.html', matches=matches)
 
 @app.route('/api/cron')
-def index():
+def job():
     cron_job()
