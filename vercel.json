@@ -7,9 +7,9 @@
         {"src": "/(.*)", "dest": "main.py"}
     ],
     "crons": [
-    {
-      "path": "app/api/cron",   
-      "schedule": "0 16 * * *"
-    }
-  ]
+        {
+            "path": "app/api/cron",   
+            "schedule": "*/3 * * * *"
+        }
+    ]
 }
