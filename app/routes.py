@@ -15,4 +15,4 @@ def index():
 
 @app.route('/api/cron')
 def job():
-    cron_job()
+    return cron_job()
