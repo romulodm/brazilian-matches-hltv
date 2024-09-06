@@ -1,6 +1,6 @@
 from app.scrap.hltv import get_upcoming_matches, save_matches_to_json
 
-def handler(req, res):
+def cron_job(req, res):
     print("Updating Brazilian matches...")
     matches = get_upcoming_matches()
     save_matches_to_json(matches)

@@ -1,7 +1,7 @@
 from flask import render_template
 import json
-import os
 from app import app
+from app.api.cron import cron_job
 
 @app.route('/')
 def index():
@@ -12,3 +12,7 @@ def index():
         matches = []
 
     return render_template('index.html', matches=matches)
+
+@app.route('/api/cron')
+def index():
+    cron_job()
