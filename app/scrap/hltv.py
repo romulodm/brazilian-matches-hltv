@@ -70,7 +70,7 @@ def get_upcoming_matches():
 
                 # Format the date and time
                 formatted_date = match_datetime.strftime('%d/%m/%Y')  # Format: DD/MM/YYYY
-                formatted_time = match_datetime.strftime('%H:%M:%S')  # Format: HH:MM:SS
+                formatted_time = match_datetime.strftime('%H:%M')  # Format: HH:MM
 
                 match_info = {
                     "timestamps": date,
